@@ -210,6 +210,89 @@
         #saveBtn:hover {
             background-color: #333;
         }
+        #rightContent {
+            display: flex;
+            align-items: center;
+        }
+
+        #userView {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        #userIcon {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            top: 30px;
+            right: 1vw;
+        }
+
+        #userName {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            top: 35px;
+            right: 5vw;
+        }
+
+        #notificationBell {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        #bellIcon {
+            position: absolute;
+            right: 30vw;
+            top: 50px;
+            width: 25px;
+            height: 25px;
+
+        }
+
+        #notificationCount {
+            position: absolute;
+            top: 20px;
+            right: 10.5vw;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 2px 6px;
+        }
+
+        #searchBar {
+            display: flex;
+            align-items: center;
+        }
+
+        #searchInput {
+            position: absolute;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 20vw;
+            right: 17vw;
+            top: 30px;
+        }
+
+        #searchButton {
+            padding: 6px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -234,6 +317,29 @@
 <!-- Border/Header Section -->
 <section id="borderNav">
     <div id="border">
+
+        <div id="navContent">
+            <!-- Search Bar on the left side -->
+            <div id="searchBar">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button id="searchButton">Search</button>
+            </div>
+
+            <!-- Right-aligned content -->
+            <div id="rightContent">
+                <!-- User View -->
+                <div id="userView">
+                    <img src="../Assets/user.png" alt="User" id="userIcon">
+                    <span id="userName">John Doe</span>
+                </div>
+
+                <!-- Notification Bell -->
+                <div id="notificationBell">
+                    <img src="../Assets/bell.png" alt="Notifications" id="bellIcon">
+                    <span id="notificationCount">3</span>
+                </div>
+            </div>
+        </div>
         <!-- Optional: Add content like notifications, page title, or breadcrumbs here -->
     </div>
 </section>
