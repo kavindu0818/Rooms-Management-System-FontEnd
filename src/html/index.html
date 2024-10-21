@@ -5,35 +5,70 @@
     <title>Dashboard</title>
 
     <style>
-        #sidebar{
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Sidebar animation */
+        @keyframes slideIn {
+            from {
+                left: -15vw;
+            }
+            to {
+                left: 0;
+            }
+        }
+
+        /* Sidebar */
+        #sidebar {
             position: fixed;
             width: 15vw;
             height: 100vh;
             background-color: #067527;
-
+            top: 0;
+            left: 0;
+            animation: slideIn 0.5s ease-out;
+            z-index: 2; /* Makes sure the sidebar is always visible on top */
         }
 
-        #border{
+        /* Header (Border section) */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #border {
             position: fixed;
-            width: 83vw;
-            left: 16vw;
+            width: 85vw;
+            left: 15vw;
+            top: 0;
             height: 17vh;
-            background-color: black;
+            background-color: #bdc1c7;
+            z-index: 1;
+            animation: fadeIn 1s ease-in;
         }
 
-        #logo{
+        /* Sidebar logo */
+        #logo {
             position: absolute;
             width: 15vw;
             height: 10vw;
             top: -1vw;
-
         }
 
-
-
         nav ul {
+            position: absolute;
             list-style: none;
-            padding: 0;
+            padding: 0px;
+            top: 20vh;
+            left: 2vw;
+
         }
 
         nav ul li {
@@ -42,7 +77,7 @@
 
         nav ul li a {
             text-decoration: none;
-            color: white; /* Font color for links */
+            color: white;
             font-size: 18px;
             display: block;
             padding: 10px;
@@ -54,10 +89,13 @@
             border-radius: 5px;
         }
 
-        #navbar{
-            position: absolute;
-            top: 20vh;
-            left: 2vw;
+        /* Main content */
+        #mainContent {
+            position: relative;
+            margin-left: 16vw;
+            margin-top: 18vh;
+            padding: 20px;
+            width: 80vw;
         }
     </style>
 </head>

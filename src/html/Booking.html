@@ -2,38 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Booking</title>
-
+    <title>Rooms-Booking</title>
     <style>
-        #sidebar{
+        /* Reset default margins */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Sidebar animation */
+        @keyframes slideIn {
+            from {
+                left: -15vw;
+            }
+            to {
+                left: 0;
+            }
+        }
+
+        /* Sidebar */
+        #sidebar {
             position: fixed;
             width: 15vw;
             height: 100vh;
             background-color: #067527;
-
+            top: 0;
+            left: 0;
+            animation: slideIn 0.5s ease-out;
+            z-index: 2; /* Makes sure the sidebar is always visible on top */
         }
 
-        #border{
+        /* Header (Border section) */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #border {
             position: fixed;
-            width: 83vw;
-            left: 16vw;
+            width: 85vw;
+            left: 15vw;
+            top: 0;
             height: 17vh;
-            background-color: black;
+            background-color: #bdc1c7;
+            z-index: 1;
+            animation: fadeIn 1s ease-in;
         }
 
-        #logo{
+        /* Sidebar logo */
+        #logo {
             position: absolute;
             width: 15vw;
             height: 10vw;
             top: -1vw;
-
         }
 
-
-
         nav ul {
+            position: absolute;
             list-style: none;
-            padding: 0;
+            padding: 0px;
+            top: 20vh;
+            left: 2vw;
+
         }
 
         nav ul li {
@@ -42,7 +77,7 @@
 
         nav ul li a {
             text-decoration: none;
-            color: white; /* Font color for links */
+            color: white;
             font-size: 18px;
             display: block;
             padding: 10px;
@@ -54,14 +89,132 @@
             border-radius: 5px;
         }
 
-        #navbar{
-            position: absolute;
-            top: 20vh;
-            left: 2vw;
+        /* Main content */
+        #mainContent {
+            position: relative;
+            margin-left: 16vw;
+            margin-top: 18vh;
+            padding: 20px;
+            width: 80vw;
+        }
+
+        /* Add booking button */
+        #addBookingBtn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #addBookingBtn:hover {
+            background-color: #044a1c;
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #067527;
+            color: white;
+        }
+
+        /* Button hover effects for table */
+        table button {
+            background-color: #067527;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        table button:hover {
+            background-color: #044a1c;
+            transform: scale(1.1);
+        }
+
+        /* Booking entries count */
+        #entriesCount {
+            font-size: 16px;
+        }
+
+        /* Modal styles */
+        #modal {
+            display: none; /* Hide modal by default */
+            position: fixed; /* Stay in place */
+            z-index: 3; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */ /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        /* Modal content */
+        .modal-content {
+            background-color: white;
+            width: 80vw; /* Set to 80vw */
+            height: 70vh; /* Set to 70vh */
+            overflow-y: auto; /* Add scroll if needed */
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Input fields and select */
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Save button */
+        #saveBtn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        #saveBtn:hover {
+            background-color: #333;
         }
     </style>
 </head>
 <body>
+
+<!-- Sidebar Section -->
 <section id="sideNavigationBar">
     <div id="sidebar">
         <img src="../Assets/logoHotel.png" id="logo" alt="Hotel Logo">
@@ -78,12 +231,97 @@
     </div>
 </section>
 
-
+<!-- Border/Header Section -->
 <section id="borderNav">
     <div id="border">
-
-
+        <!-- Optional: Add content like notifications, page title, or breadcrumbs here -->
     </div>
 </section>
+
+<!-- Main Content Section -->
+<section id="mainContent">
+    <!-- Add Booking Button -->
+    <button id="addBookingBtn" onclick="openModal()">+ Booking</button>
+
+    <!-- Booking Table -->
+    <table>
+        <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Action</th>
+            <th>Room</th>
+            <th>Customer</th>
+            <th>Booking NO</th>
+            <th>Dates</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Sample Data Rows -->
+        <tr>
+            <td>1</td>
+            <td><button>Edit</button> <button>Delete</button></td>
+            <td>101</td>
+            <td>John Doe</td>
+            <td>BK123456</td>
+            <td>2024-10-01 to 2024-10-05</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><button>Edit</button> <button>Delete</button></td>
+            <td>102</td>
+            <td>Jane Smith</td>
+            <td>BK123457</td>
+            <td>2024-10-10 to 2024-10-12</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Booking Entries Count -->
+    <div id="entriesCount">
+        Showing 2 booking entries.
+    </div>
+</section>
+
+<!-- Modal for Booking Form -->
+<div id="modal">
+    <div class="modal-content">
+        <span onclick="closeModal()" style="cursor:pointer; float:right; font-size:24px; color:red;">&times;</span>
+        <h2>Booking Details</h2>
+        <label for="roomType">Room Type:</label>
+        <select id="roomType">
+            <option value="single">Single</option>
+            <option value="double">Double</option>
+            <option value="suite">Suite</option>
+        </select>
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" placeholder="Enter customer's name">
+        <label for="bookingNumber">Booking Number:</label>
+        <input type="text" id="bookingNumber" placeholder="Enter booking number">
+        <!-- Add other fields as needed -->
+
+        <!-- Save Button -->
+        <button id="saveBtn">Save Booking</button>
+    </div>
+</div>
+
+<!-- JavaScript for Modal -->
+<script>
+    function openModal() {
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    // Close the modal when clicking outside the modal content
+    window.onclick = function(event) {
+        const modal = document.getElementById('modal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
 </body>
 </html>
