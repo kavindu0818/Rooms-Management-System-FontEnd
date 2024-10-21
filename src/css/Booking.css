@@ -1,0 +1,289 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar animation */
+@keyframes slideIn {
+    from {
+        left: -15vw;
+    }
+    to {
+        left: 0;
+    }
+}
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    width: 15vw;
+    height: 100vh;
+    background-color: #067527;
+    top: 0;
+    left: 0;
+    animation: slideIn 0.5s ease-out;
+    z-index: 2; /* Makes sure the sidebar is always visible on top */
+}
+
+/* Header (Border section) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#border {
+    position: fixed;
+    width: 85vw;
+    left: 15vw;
+    top: 0;
+    height: 17vh;
+    background-color: #bdc1c7;
+    z-index: 1;
+    animation: fadeIn 1s ease-in;
+}
+
+/* Sidebar logo */
+#logo {
+    position: absolute;
+    width: 15vw;
+    height: 10vw;
+    top: -1vw;
+}
+
+nav ul {
+    position: absolute;
+    list-style: none;
+    padding: 0px;
+    top: 20vh;
+    left: 2vw;
+
+}
+
+nav ul li {
+    margin-bottom: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+/* Main content */
+#mainContent {
+    position: relative;
+    margin-left: 16vw;
+    margin-top: 18vh;
+    padding: 20px;
+    width: 80vw;
+}
+
+/* Add booking button */
+#addBookingBtn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#addBookingBtn:hover {
+    background-color: #044a1c;
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #067527;
+    color: white;
+}
+
+/* Button hover effects for table */
+table button {
+    background-color: #067527;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+table button:hover {
+    background-color: #044a1c;
+    transform: scale(1.1);
+}
+
+/* Booking entries count */
+#entriesCount {
+    font-size: 16px;
+}
+
+/* Modal styles */
+#modal {
+    display: none; /* Hide modal by default */
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */ /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: white;
+    width: 80vw; /* Set to 80vw */
+    height: 70vh; /* Set to 70vh */
+    overflow-y: auto; /* Add scroll if needed */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Input fields and select */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Save button */
+#saveBtn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+#saveBtn:hover {
+    background-color: #333;
+}
+#rightContent {
+    display: flex;
+    align-items: center;
+}
+
+#userView {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+#userIcon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    top: 30px;
+    right: 1vw;
+}
+
+#userName {
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    top: 35px;
+    right: 5vw;
+}
+
+#notificationBell {
+    position: relative;
+    margin-right: 20px;
+}
+
+#bellIcon {
+    position: absolute;
+    right: 30vw;
+    top: 50px;
+    width: 25px;
+    height: 25px;
+    display: block;
+
+}
+
+#notificationCount {
+    position: absolute;
+    top: 20px;
+    right: 10.5vw;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 2px 6px;
+}
+
+#searchBar {
+    display: flex;
+    align-items: center;
+}
+
+#searchInput {
+    position: absolute;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 20vw;
+    right: 17vw;
+    top: 30px;
+}
+
+#searchButton {
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+}
