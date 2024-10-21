@@ -172,6 +172,48 @@
             background-color: #0056b3;
         }
 
+        #viewCount {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px; /* Spacing between rectangles */
+            padding: 20px;
+            width: 82%;
+            height: 73vh;
+            background-color: #9ea0a3;
+            top: 17vh;
+            left: 15vw;
+            flex-wrap: wrap; /* Ensure boxes wrap properly if needed */
+        }
+
+        .info-box {
+            width: calc(20% - 15px); /* Five rectangles with equal width */
+            height: 15vh;
+            background-color: #56595e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            #viewCount {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .info-box {
+                width: 100%;
+            }
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -218,6 +260,15 @@
         </div>
     </div>
 </section>
+
+<section id="viewCount">
+    <div class="info-box">Room Count <br> 210</div>
+    <div class="info-box">Booking Count<br>100</div>
+    <div class="info-box">Today Exiting<br>80</div>
+    <div class="info-box">Some Other Info<br>40</div>
+    <div class="info-box">Additional Info<br>20</div>
+</section>
+
 
 </body>
 </html>

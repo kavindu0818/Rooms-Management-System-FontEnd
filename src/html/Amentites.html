@@ -88,7 +88,6 @@
             width: 100%;
         }
 
-        /* Right-aligned content for user view and notification */
         #rightContent {
             display: flex;
             align-items: center;
@@ -172,9 +171,69 @@
             background-color: #0056b3;
         }
 
+        #amenSection {
+            position: absolute;
+            width: 85%;
+            height: 80vh;
+            left: 15vw;
+            background-color: #f0f0f0;
+            top: 17vh;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: scroll;
+        }
+
+        #amenSection h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #roomTypeSelect {
+            width: 200px;
+            margin-bottom: 20px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #amenitiesList {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .amenityItem {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .amenityItem:hover {
+            background-color: #005a1b;
+        }
+
+        #amenDes {
+            display: block;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #amenInput {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
     </style>
 </head>
 <body>
+
 <section id="sideNavigationBar">
     <div id="sidebar">
         <img src="../Assets/logoHotel.png" id="logo" alt="Hotel Logo">
@@ -190,7 +249,6 @@
         </nav>
     </div>
 </section>
-
 
 <section id="borderNav">
     <div id="border">
@@ -218,6 +276,115 @@
         </div>
     </div>
 </section>
+
+<section id="amenSection">
+    <h2>Room Amenities</h2>
+
+    <label for="roomType">Room Type:</label>
+    <select id="roomTypeSelect">
+        <option value="standard">Standard</option>
+        <option value="deluxe">Deluxe</option>
+        <option value="suite">Suite</option>
+    </select>
+
+    <div id="amenitiesList">
+        <div class="amenityItem">Free Wi-Fi</div>
+        <div class="amenityItem">Television (Cable/Satellite)</div>
+        <div class="amenityItem">Air Conditioning</div>
+        <div class="amenityItem">Mini Bar/Fridge</div>
+        <div class="amenityItem">Coffee/Tea Maker</div>
+        <div class="amenityItem">Safe Deposit Box</div>
+        <div class="amenityItem">Telephone</div>
+        <div class="amenityItem">Iron and Ironing Board</div>
+        <div class="amenityItem">Hairdryer</div>
+        <div class="amenityItem">Room Service</div>
+        <div class="amenityItem">Work Desk</div>
+        <div class="amenityItem">Complimentary Toiletries</div>
+        <div class="amenityItem">Bathrobe and Slippers</div>
+        <div class="amenityItem">Wardrobe/Closet</div>
+        <div class="amenityItem">Blackout Curtains</div>
+        <div class="amenityItem">Laundry Service</div>
+        <div class="amenityItem">In-room Dining</div>
+        <div class="amenityItem">Alarm Clock</div>
+        <div class="amenityItem">Soundproofing</div>
+        <div class="amenityItem">Extra Towels/Bedding</div>
+        <div class="amenityItem">Private Balcony</div>
+        <div class="amenityItem">Complimentary Bottled Water</div>
+        <div class="amenityItem">Seating Area</div>
+        <div class="amenityItem">Heating</div>
+        <div class="amenityItem">Hypoallergenic Bedding</div>
+        <!-- Add more as needed -->
+    </div>
+
+    <label id="amenDes">Description</label>
+    <input placeholder="Add Amenities Description" type="text" id="amenInput">
+</section>
+
+<script>
+    // Descriptions for each amenity
+    const amenityDescriptions = {
+        "Free Wi-Fi": "High-speed internet access for guests throughout the room.",
+        "Television (Cable/Satellite)": "Enjoy a variety of channels on a flat-screen TV.",
+        "Air Conditioning": "Control the room temperature to your comfort.",
+        "Mini Bar/Fridge": "A small fridge stocked with refreshments.",
+        "Coffee/Tea Maker": "In-room appliance for making coffee or tea.",
+        "Safe Deposit Box": "A secure place to store your valuables.",
+        "Telephone": "In-room phone for local and international calls.",
+        "Iron and Ironing Board": "Available in-room for your convenience.",
+        "Hairdryer": "High-power hairdryer for guest use.",
+        "Room Service": "Order food and drinks directly to your room.",
+        "Work Desk": "A desk area for work or leisure.",
+        "Complimentary Toiletries": "Free basic toiletries including soap, shampoo, and conditioner.",
+        "Bathrobe and Slippers": "Cozy bathrobe and slippers for in-room comfort.",
+        "Wardrobe/Closet": "Space to hang your clothes and store luggage.",
+        "Blackout Curtains": "Heavy curtains to block out sunlight and ensure privacy.",
+        "Laundry Service": "Professional laundry services available upon request.",
+        "In-room Dining": "Option for dining in the comfort of your room.",
+        "Alarm Clock": "Set your own wake-up alarm.",
+        "Soundproofing": "Enjoy peace and quiet with soundproofed walls.",
+        "Extra Towels/Bedding": "Additional towels and bedding available in the room.",
+        "Private Balcony": "A balcony to enjoy outdoor views in private.",
+        "Complimentary Bottled Water": "Free bottled water for your convenience.",
+        "Seating Area": "A comfortable seating area within your room.",
+        "Heating": "Room heating system for colder weather.",
+        "Hypoallergenic Bedding": "Bedding designed for guests with allergies."
+    };
+
+    // Array to hold selected amenities
+    const selectedAmenities = [];
+
+    // Get all the amenity items and description input field
+    const amenities = document.querySelectorAll('.amenityItem');
+    const descriptionInput = document.getElementById('amenInput');
+
+    // Loop through each amenity and add a click event listener
+    amenities.forEach(amenity => {
+        amenity.addEventListener('click', function() {
+            // Get the clicked amenity's name
+            const amenityName = this.textContent;
+
+            // Check if the amenity is already selected
+            if (!selectedAmenities.includes(amenityName)) {
+                // Add the amenity to the selected amenities array
+                selectedAmenities.push(amenityName);
+
+                // Update the description box with selected amenities
+                descriptionInput.value = selectedAmenities.join(', ');
+            } else {
+                // Remove the amenity from the selected amenities array
+                const index = selectedAmenities.indexOf(amenityName);
+                if (index > -1) {
+                    selectedAmenities.splice(index, 1);
+                }
+
+                // Update the description box
+                descriptionInput.value = selectedAmenities.join(', ');
+            }
+        });
+    });
+</script>
+
+
 
 </body>
 </html>

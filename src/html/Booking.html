@@ -250,6 +250,7 @@
             top: 50px;
             width: 25px;
             height: 25px;
+            display: block;
 
         }
 
@@ -393,22 +394,100 @@
     <div class="modal-content">
         <span onclick="closeModal()" style="cursor:pointer; float:right; font-size:24px; color:red;">&times;</span>
         <h2>Booking Details</h2>
+        <!-- Existing Fields -->
         <label for="roomType">Room Type:</label>
         <select id="roomType">
-            <option value="single">Single</option>
-            <option value="double">Double</option>
-            <option value="suite">Suite</option>
+            <option value="">Select Room Type</option>
+            <option value="Single">Single</option>
+            <option value="Double">Double</option>
+            <option value="Suite">Suite</option>
         </select>
-        <label for="customerName">Customer Name:</label>
-        <input type="text" id="customerName" placeholder="Enter customer's name">
-        <label for="bookingNumber">Booking Number:</label>
-        <input type="text" id="bookingNumber" placeholder="Enter booking number">
-        <!-- Add other fields as needed -->
 
-        <!-- Save Button -->
-        <button id="saveBtn">Save Booking</button>
+        <label for="accommodation">Accommodation:</label>
+        <select id="accommodation">
+            <option value="">Select Accommodation</option>
+            <option value="Adult">Adult</option>
+            <option value="Child">Child</option>
+        </select>
+
+        <label for="roomNumber">Room Number:</label>
+        <input type="text" id="roomNumber" placeholder="Enter Room Number">
+
+        <label for="dateRange">Date Range:</label>
+        <input type="text" id="dateRange" placeholder="Select Date Range">
+
+        <label for="duration">Duration:</label>
+        <input type="text" id="duration" placeholder="Enter Duration">
+
+        <label for="paymentType">Payment Type:</label>
+        <select id="paymentType">
+            <option value="">Select Payment Type</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Cash">Cash</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+        </select>
+
+        <label for="paymentStatus">Payment Status:</label>
+        <select id="paymentStatus">
+            <option value="">Select Payment Status</option>
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+
+        <!-- Customer Details Section -->
+        <h3>Customer Details</h3>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" placeholder="Enter First Name">
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" placeholder="Enter Last Name">
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" placeholder="Enter Email Address">
+
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" id="mobileNumber" placeholder="Enter Mobile Number">
+
+        <label for="note">Note:</label>
+        <input type="text" id="note" placeholder="Enter Note">
+
+        <label for="nic">NIC:</label>
+        <input type="text" id="nic" placeholder="Enter NIC">
+
+        <!-- New Fields -->
+        <label for="price">Price:</label>
+        <input type="text" id="price" placeholder="Enter Price">
+
+        <label for="">Room Size (Width x Length):</label>
+        <input type="text" id="width" placeholder="Width">
+        <input type="text" id="length" placeholder="Length">
+
+        <label for="maxAdultCount">Maximum Adult Count:</label>
+        <input type="number" id="maxAdultCount" placeholder="Max Adult Count">
+
+        <label for="maxChildCount">Maximum Child Count:</label>
+        <input type="number" id="maxChildCount" placeholder="Max Child Count">
+
+        <label for="amenities">Amenities:</label>
+        <input type="text" id="amenities" placeholder="Enter Amenities">
+
+        <label for="imageUpload">Image (Choose File):</label>
+        <input type="file" id="imageUpload">
+
+        <label for="shortDescription">Short Description:</label>
+        <input type="text" id="shortDescription" placeholder="Enter Short Description">
+
+        <label for="description">Description:</label>
+        <textarea id="description" rows="4" placeholder="Enter Description"></textarea>
+
+        <!-- Action Buttons -->
+        <button id="submitBtn" style="background-color: blue; color: white;" onclick="submitForm()">Submit</button>
+        <button id="clearBtn" style="background-color: black; color: white;" onclick="clearForm()">Clear</button>
     </div>
 </div>
+
+
 
 <!-- JavaScript for Modal -->
 <script>
