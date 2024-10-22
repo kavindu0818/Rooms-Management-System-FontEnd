@@ -66,36 +66,37 @@
     </select>
 
     <div id="amenitiesList">
-        <div class="amenityItem">Free Wi-Fi</div>
-        <div class="amenityItem">Television (Cable/Satellite)</div>
-        <div class="amenityItem">Air Conditioning</div>
-        <div class="amenityItem">Mini Bar/Fridge</div>
-        <div class="amenityItem">Coffee/Tea Maker</div>
-        <div class="amenityItem">Safe Deposit Box</div>
-        <div class="amenityItem">Telephone</div>
-        <div class="amenityItem">Iron and Ironing Board</div>
-        <div class="amenityItem">Hairdryer</div>
-        <div class="amenityItem">Room Service</div>
-        <div class="amenityItem">Work Desk</div>
-        <div class="amenityItem">Complimentary Toiletries</div>
-        <div class="amenityItem">Bathrobe and Slippers</div>
-        <div class="amenityItem">Wardrobe/Closet</div>
-        <div class="amenityItem">Blackout Curtains</div>
-        <div class="amenityItem">Laundry Service</div>
-        <div class="amenityItem">In-room Dining</div>
-        <div class="amenityItem">Alarm Clock</div>
-        <div class="amenityItem">Soundproofing</div>
-        <div class="amenityItem">Extra Towels/Bedding</div>
-        <div class="amenityItem">Private Balcony</div>
-        <div class="amenityItem">Complimentary Bottled Water</div>
-        <div class="amenityItem">Seating Area</div>
-        <div class="amenityItem">Heating</div>
-        <div class="amenityItem">Hypoallergenic Bedding</div>
+        <div class="amenityItem">#Free Wi-Fi</div>
+        <div class="amenityItem">#Television (Cable/Satellite)</div>
+        <div class="amenityItem">#Air Conditioning</div>
+        <div class="amenityItem">#Mini Bar/Fridge</div>
+        <div class="amenityItem">#Coffee/Tea Maker</div>
+        <div class="amenityItem">#Safe Deposit Box</div>
+        <div class="amenityItem">#Telephone</div>
+        <div class="amenityItem">#Iron and Ironing Board</div>
+        <div class="amenityItem">#Hairdryer</div>
+        <div class="amenityItem">#Room Service</div>
+        <div class="amenityItem">#Work Desk</div>
+        <div class="amenityItem">#Complimentary Toiletries</div>
+        <div class="amenityItem">#Bathrobe and Slippers</div>
+        <div class="amenityItem">#Wardrobe/Closet</div>
+        <div class="amenityItem">#Blackout Curtains</div>
+        <div class="amenityItem">#Laundry Service</div>
+        <div class="amenityItem">#In-room Dining</div>
+        <div class="amenityItem">#Alarm Clock</div>
+        <div class="amenityItem">#Soundproofing</div>
+        <div class="amenityItem">#Extra Towels/Bedding</div>
+        <div class="amenityItem">#Private Balcony</div>
+        <div class="amenityItem">#Complimentary Bottled Water</div>
+        <div class="amenityItem">#Seating Area</div>
+        <div class="amenityItem">#Heating</div>
+        <div class="amenityItem">#Hypoallergenic Bedding</div>
         <!-- Add more as needed -->
     </div>
 
     <label id="amenDes">Description</label>
     <input placeholder="Add Amenities Description" type="text" id="amenInput">
+    <button id="addAmenityBtn">Add Selected Amenities</button>
 </section>
 
 <script>
@@ -160,6 +161,15 @@
             }
         });
     });
+
+    document.getElementById('addAmenityBtn').addEventListener('click', function() {
+        if (selectedAmenities.length > 0) {
+            alert('Selected Amenities: ' + selectedAmenities.join(', '));
+        } else {
+            alert('No amenities selected.');
+        }
+    });
+
 </script>
 
 

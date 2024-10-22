@@ -287,3 +287,33 @@ input, select {
 #searchButton:hover {
     background-color: #0056b3;
 }
+
+.small-radio {
+    transform: scale(0.7); /* Scale down the size of the radio button */
+    margin-right: 8px;     /* Add some spacing between the radio and label */
+}
+
+#btn1{
+    position: absolute;
+    right: 4vw;
+    width: 10vw;
+    background-color: #56595e;
+    color: white;
+
+}
+
+#btn2{
+    position: absolute;
+    right: 15vw;
+    width: 15vw;
+    background-color: #555555;
+    color: white;
+}
+
+#viewDetails{
+    position: absolute;
+    width: 80%;
+    left: 18vw;
+    background-color: #9ea0a3;
+    top: 75vh;
+}

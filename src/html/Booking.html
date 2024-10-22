@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <title>Rooms-Booking</title>
     <link rel="stylesheet" href="../css/Booking.css">
-    <style>
-        /* Reset default margins */
 
-    </style>
 </head>
 <body>
 
@@ -98,9 +95,87 @@
 
     <!-- Booking Entries Count -->
     <div id="entriesCount">
+
         Showing 2 booking entries.
     </div>
 </section>
+
+<section id="viewBooking">
+    <button id="btn1">All Booking</button>
+    <button id="btn2">Only View Day Booking</button>
+</section>
+
+<section id="viewDetails">
+    <section id="viewAllBooking">
+        <table>
+            <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Action</th>
+                <th>Room</th>
+                <th>Customer</th>
+                <th>Booking NO</th>
+                <th>Dates</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+                <td>101</td>
+                <td>John Doe</td>
+                <td>BK123456</td>
+                <td>2024-10-01 to 2024-10-05</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+                <td>102</td>
+                <td>Jane Smith</td>
+                <td>BK123457</td>
+                <td>2024-10-10 to 2024-10-12</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="viewDayBooking" style="display: none;">
+        <label>Enter The Day</label>
+        <input type="date">
+        <table>
+            <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Action</th>
+                <th>Room</th>
+                <th>Customer</th>
+                <th>Booking NO</th>
+                <th>Dates</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+                <td>101</td>
+                <td>John Doe</td>
+                <td>BK123456</td>
+                <td>2024-10-01 to 2024-10-05</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+                <td>102</td>
+                <td>Jane Smith</td>
+                <td>BK123457</td>
+                <td>2024-10-10 to 2024-10-12</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</section>
+
+
 
 <!-- Modal for Booking Form -->
 <div id="modal">
@@ -219,6 +294,26 @@
             modal.style.display = 'none';
         }
     }
+
+
+        document.getElementById("btn1").addEventListener("click", function() {
+        // Show viewDetails section and hide viewDayBooking
+        document.getElementById("viewAllBooking").style.display = "block";
+        document.getElementById("viewDayBooking").style.display = "none";
+    });
+
+        document.getElementById("btn2").addEventListener("click", function() {
+        // Show viewDayBooking section and hide viewAllBooking
+        document.getElementById("viewDayBooking").style.display = "block";
+        document.getElementById("viewAllBooking").style.display = "none";
+    });
+
+        // Set default view to viewDetails and viewAllBooking visible
+        window.onload = function() {
+        document.getElementById("viewAllBooking").style.display = "block";
+        document.getElementById("viewDayBooking").style.display = "none";
+    };
+
 </script>
 
 </body>
